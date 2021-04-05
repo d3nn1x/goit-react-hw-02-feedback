@@ -14,7 +14,7 @@ class App extends Component {
 
   addFeedback = e => {
     this.setState(prevState => ({
-      [e.target.textContent]: prevState[e.target.textContent] + 1,
+      [e.target.name]: prevState[e.target.name] + 1,
     }));
   };
 

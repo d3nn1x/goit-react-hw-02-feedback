@@ -1,14 +1,14 @@
 const FeedbackOptions = ({ onLeaveFeedback }) => {
   return (
     <>
-      <button className="btn" onClick={onLeaveFeedback}>
-        good
+      <button className="btn" onClick={onLeaveFeedback} name="good">
+        Good
       </button>
-      <button className="btn" onClick={onLeaveFeedback}>
-        neutral
+      <button className="btn" onClick={onLeaveFeedback} name="neutral">
+        Neutral
       </button>
-      <button className="btn" onClick={onLeaveFeedback}>
-        bad
+      <button className="btn" onClick={onLeaveFeedback} name="bad">
+        Bad
       </button>
     </>
   );
