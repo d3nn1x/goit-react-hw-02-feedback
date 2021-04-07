@@ -1,5 +1,4 @@
 import { Component } from 'react';
-// import PropTypes from 'prop-types';
 import Section from './components/Section/Section';
 import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
 import Statistics from './components/Statistics/Statistics';
@@ -12,9 +11,10 @@ class App extends Component {
     bad: 0,
   };
 
-  addFeedback = e => {
+  onLeaveFeedback = e => {
+    const { name } = e.target;
     this.setState(prevState => ({
-      [e.target.name]: prevState[e.target.name] + 1,
+      [name]: prevState[name] + 1,
     }));
   };
 
@@ -25,24 +25,25 @@ class App extends Component {
     return total;
   };
 
-  countPositiveFeedbackPercentage = () => {
+  positivePercentage = () => {
     return Math.round((this.state.good / this.countTotalFeedback()) * 100);
   };
 
   render() {
+    const { good, neutral, bad } = this.state;
     return (
       <>
         <Section title="Please leave feedback">
-          <FeedbackOptions onLeaveFeedback={this.addFeedback} />
+          <FeedbackOptions onLeaveFeedback={this.onLeaveFeedback} />
         </Section>
         <Section title="Statistics">
           {this.countTotalFeedback() ? (
             <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
+              good={good}
+              neutral={neutral}
+              bad={bad}
               total={this.countTotalFeedback()}
-              positivePercentage={this.countPositiveFeedbackPercentage()}
+              positivePercentage={this.positivePercentage()}
             />
           ) : (
             <Notification message="No feedback given" />
