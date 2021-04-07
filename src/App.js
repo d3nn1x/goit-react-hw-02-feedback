@@ -4,6 +4,18 @@ import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
 import Statistics from './components/Statistics/Statistics';
 import Notification from './components/Notification/Notification';
 
+const options = [
+  { id: 'good', title: 'Good' },
+  { id: 'neutral', title: 'Neutral' },
+  { id: 'bad', title: 'Bad' },
+];
+
+// const optionsRu = [
+//   { id: 'good', title: 'Хорошо' },
+//   { id: 'neutral', title: 'Нейтрально' },
+//   { id: 'bad', title: 'Плохо' },
+// ];
+
 class App extends Component {
   state = {
     good: 0,
@@ -34,7 +46,10 @@ class App extends Component {
     return (
       <>
         <Section title="Please leave feedback">
-          <FeedbackOptions onLeaveFeedback={this.onLeaveFeedback} />
+          <FeedbackOptions
+            options={options}
+            onLeaveFeedback={this.onLeaveFeedback}
+          />
         </Section>
         <Section title="Statistics">
           {this.countTotalFeedback() ? (
